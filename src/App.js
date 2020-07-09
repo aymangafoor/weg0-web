@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Link, Switch, } from "react-router-dom";
+import Hotel from './hotel'
+import Home from './home'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends Component {
+  render() {
+      return (
+        <Router>
+          <div className='container'>
+            
+            
+            <div className='tab'>
+                <h1 className='logo'>We Go</h1>
+                <Link className='link' to="/">Home</Link>
+                <Link className='link' to="/hotel">Hotels</Link>
+                <Link className='link' to="/about">About</Link>
+                </div>
 
-export default App;
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/hotel" component={Hotel} />
+              <Route path="/about" component={About} />
+
+            </Switch>
+          </div>
+        </Router>
+
+        )
+  }
+}export default App;
+
+const About = () => (
+        <div className='about'>
+          <h2 className='heading'>About</h2>
+          <p className='para'>We help users to plan their trip by giving tourist places information from any location in India. We also provide information about hotel for stay</p>
+        </div>
+);
